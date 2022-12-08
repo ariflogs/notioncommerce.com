@@ -1,0 +1,69 @@
+---
+import HeaderLink from "./HeaderLink.astro";
+import { SITE_TITLE } from "../config";
+import MobileNav from "./MobileNav";
+
+---
+
+<header class="shadow-md m-0">
+  <div
+    class="bg-red-400 text-xs md:text-sm h-12 flex items-center justify-center px-2 font-semibold text-white mx-auto text-center fixed top-0 left-0 right-0 z-10"
+  >
+    Use FRIDAY50 coupon within Dec 2022 to get 50% dicount.
+  </div>
+
+  <div class="h-12"></div>
+
+  <div
+    class="flex justify-between items-center max-w-6xl mx-auto py-4 px-4 lg:px-0 relative"
+  >
+    <a href="/" class="flex items-center space-x-2">
+      <img src="/logo.png" class="h-10 md:h-8" alt="image description" />
+      <h6 class="font-medium hidden md:block">NotionCommerce</h6>
+    </a>
+
+    <nav class="block md:hidden mobile-nav flex-1">
+      <MobileNav client:visible />
+    </nav>
+
+    <nav class="hidden md:block space-x-4">
+      <HeaderLink href="#features">Features</HeaderLink>
+      <HeaderLink href="#pricing">Pricing</HeaderLink>
+      <HeaderLink href="/ppp">PPP</HeaderLink>
+    </nav>
+
+    <!-- <nav class="hidden md:block space-x-2">
+			<button class="border border-gray-800 hover:border-gray-900 shadow hover:shadow-md rounded-md px-4 py-1.5">Login</button>
+			<button class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-1.5 rounded-md shadow">Signup</button>
+		</nav> -->
+    <nav class="hidden md:block space-x-2">
+      <a
+        href="https://app.notioncommerce.com"
+        class="bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded-md shadow"
+        >Dashboard</a
+      >
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    margin: 0em 0 2em;
+  }
+  h2 {
+    margin: 0.5em 0;
+  }
+</style>
+
+<script async src="https://cdn.splitbee.io/sb.js"></script>
+<script type="text/javascript">
+  window.$crisp = [];
+  window.CRISP_WEBSITE_ID = "e2e1afe9-6eab-4f9d-8df2-3df2a7d712e8";
+  (function () {
+    d = document;
+    s = d.createElement("script");
+    s.src = "https://client.crisp.chat/l.js";
+    s.async = 1;
+    d.getElementsByTagName("head")[0].appendChild(s);
+  })();
+</script>

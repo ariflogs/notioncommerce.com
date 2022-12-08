@@ -1,0 +1,70 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+export interface Props {
+	content: {
+		title: string;
+		description: string;
+		pubDate?: string;
+		tags?: string;
+		updatedDate?: string;
+		heroImage?: string;
+	};
+}
+
+const {
+	content: { title, description, tags, pubDate, updatedDate, heroImage },
+} = Astro.props as Props;
+---
+
+<html>
+	<head>
+		<BaseHead title={title} description={description} image={heroImage} />
+	</head>
+
+	<body class="container max-w-4xl mx-auto">
+		<Header />
+		<main>
+			<article class="blog bg-white p-4 lg:p-6 rounded-md">
+				<!-- {
+					heroImage && (
+						<img width={720} height={360} src={heroImage} alt="" />
+					)
+				} -->
+				<h1>{title}</h1>
+
+				{
+					tags &&
+					tags
+						.split(", ")
+						.map((tag) => (
+							<span class="text-purple-800 text-sm bg-purple-200 px-2 py-0.5 mr-2 rounded-md">
+								#{tag}
+							</span>
+						))
+				}
+				<br />
+				{pubDate && <p class="mt-2">{pubDate}</p>}
+				{
+					updatedDate && (
+						<div>
+							Last updated on <time>{updatedDate}</time>
+						</div>
+					)
+				}
+				<hr />
+				<slot />
+			</article>
+			<iframe
+				src="https://parttimemaker.substack.com/embed"
+				width="100%"
+				height="200"
+				style="border:1px solid #EEE; background: transparent;"
+				frameborder="0"
+				scrolling="no"></iframe>
+		</main>
+		<Footer />
+	</body>
+</html>

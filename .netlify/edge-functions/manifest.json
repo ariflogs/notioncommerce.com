@@ -1,0 +1,49 @@
+{
+  "functions": [
+    {
+      "function": "entry",
+      "path": "/"
+    },
+    {
+      "function": "entry",
+      "path": "/side-projects/notioncommerce"
+    },
+    {
+      "function": "entry",
+      "path": "/side-projects/studymerge"
+    },
+    {
+      "function": "entry",
+      "path": "/privacy"
+    },
+    {
+      "function": "entry",
+      "path": "/rss.xml"
+    },
+    {
+      "function": "entry",
+      "path": "/refund"
+    },
+    {
+      "function": "entry",
+      "path": "/blogs/noiton-convert-timezone"
+    },
+    {
+      "function": "entry",
+      "path": "/blogs/good-old-days-of-web"
+    },
+    {
+      "function": "entry",
+      "path": "/blogs/tools-notioncommerce"
+    },
+    {
+      "function": "entry",
+      "path": "/blogs/college-pros"
+    },
+    {
+      "function": "entry",
+      "path": "/blogs/6s-6s"
+    }
+  ],
+  "version": 1
+}

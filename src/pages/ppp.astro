@@ -1,0 +1,87 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+
+import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
+
+const contries = [
+  "Morocco",
+  "Tunisia",
+  "Angola",
+  "Djibouti",
+  "Bolivia",
+  "Cape Verde",
+  "Philippines",
+  "Bhutan",
+  "Palestine",
+  "Papua New Guinea",
+  "Sri Lanka",
+  "Venezuela",
+  "Vanuatu",
+  "Honduras",
+  "Congo",
+  "Bangladesh",
+  "Lebanon",
+  "India",
+  "Zimbabwe",
+  "Ivory Coast",
+  "Nicaragua",
+  "Ghana",
+  "Mauritania",
+  "Nigeria",
+  "Kenya",
+  "Uzbekistan",
+  "Solomon Islands",
+  "São Tomé and Príncipe",
+  "Laos",
+  "East Timor",
+  "Cambodia",
+  "Kiribati",
+  "Haiti",
+  "Pakistan",
+  "Cameroon",
+  "Senegal",
+  "Kyrgyzstan",
+  "Benin",
+  "Zambia",
+  "Guinea",
+  "Comoros",
+  "Nepal",
+  "Tanzania",
+  "Lesotho",
+  "Uganda",
+  "Myanmar",
+  "Ethiopia",
+];
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <BaseLayout />
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main class="container max-w-6xl px-4 mx-auto py-6">
+      <p class="text-lg">
+        We support Parity Purchasing Power. So if you are from any of these 👇🏼
+        country and you need need it, feel free code PPP50 to get 50% off your
+        subscription at checkout.
+      </p>
+      <br />
+      {contries.sort().map((con) => <li class="li">{con}</li>)}
+    </main>
+
+    <section id="footer">
+      <div
+        class="bg-gray-900 flex justify-center text-sm px-4 py-4 text-center space-x-4 text-gray-200"
+      >
+        <a href="/privacy" target="_blank">Privacy Policy</a>
+        <p>.</p>
+        <a target="_blank" href="/refund">Refund Policy</a>
+      </div>
+    </section>
+  </body>
+</html>
