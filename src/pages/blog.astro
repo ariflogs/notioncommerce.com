@@ -3,6 +3,7 @@ import BaseHead from "../components/BaseHead.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import Header from "../components/Header.astro";
+import BlogCard from "../components/BlogCard.astro";
 ---
 
 <!DOCTYPE html>
@@ -16,27 +17,12 @@ import Header from "../components/Header.astro";
     <div class="h-28 md:h-32"></div>
     <main class="container max-w-6xl px-4 mx-auto">
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-        <div class="rounded-md border border-gray-500 p-4">
-          <div class="overflow-hidden rounded-lg">
-            <img
-              src="https://www.blogger.com/about/img/social/facebook-1200x630.jpg"
-              alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
-              class="h-400 w-600"
-            />
-          </div>
-          <div class="my-3 text-sm text-gray-400"></div>
-          <h2>Bloggers are getting missing more day by day</h2>
-          <div class="flex flex-wrap space-x-2">
-            <span
-              class="py-1/2 mt-2 rounded bg-red-200 px-2 text-sm text-red-400"
-              >Apple Workout
-            </span>
-            <span
-              class="py-1/2 mt-2 rounded bg-red-200 px-2 text-sm text-red-400"
-              >Apple Workout
-            </span>
-          </div>
-        </div>
+        <a href="BlogPost.astro ">
+         <BlogCard/> 
+        </a>
+        <BlogCard/>
+        <BlogCard/>
+        <BlogCard/>
       </div>
     </main>
   </body>
