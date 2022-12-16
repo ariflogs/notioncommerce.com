@@ -1,0 +1,64 @@
+---
+import Client from "../../client";
+import BaseHead from "../../components/BaseHead.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
+import Header from "../../components/Header.astro";
+import BlogCard from "../../components/BlogCard.astro";
+
+
+const response = await Client.fetch(
+  `*[_type == 'post'  && product->title == 'NotionCommerce']{
+       title,
+       slug{
+        current
+       },
+       author,
+       mainImage{
+         asset->{
+            _id,
+            url
+         },
+         alt
+       },
+       tags[]->
+       {
+          title
+        }  
+  }`
+);
+---
+
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <BaseLayout />
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <div class="h-28 md:h-32"></div>
+    <main class="container max-w-6xl px-4 mx-auto">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {
+          response.map(
+            (res: {
+              slug: any;
+              title: any;
+              mainImage: { asset: { url: any } };
+              tags: any;
+            }) => (
+              <a href={`/blogs/${res.slug.current}`}>
+                <BlogCard
+                  title={res.title}
+                  image={res.mainImage.asset.url}
+                  tag={res.tags}
+                />
+              </a>
+            )
+          )
+        }
+      </div>
+    </main>
+  </body>
+</html>
