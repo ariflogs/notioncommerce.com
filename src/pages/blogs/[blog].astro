@@ -1,0 +1,63 @@
+---
+import Client from "../../client";
+import BaseHead from "../../components/BaseHead.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { SITE_TITLE, SITE_DESCRIPTION } from "../../config";
+import Header from "../../components/Header.astro";
+
+export function getStaticPaths() {
+  return [{ params: { blog: blog } }];
+}
+
+const { blog } = Astro.params;
+
+console.log(blog);
+
+const response = await Client.fetch(
+  `*[_type == 'post' && slug.current == ${blog}]{
+       title,
+       slug,
+       author,
+       mainImage{
+         asset->{
+            _id,
+            url
+         },
+         alt
+       },
+       tags[]->
+       {
+          title
+        }  
+  }`
+);
+
+console.log(response);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <BaseLayout />
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body>
+    <Header title={SITE_TITLE} />
+    <main>
+      {
+        response.map((res) => (
+          <div>
+            <img
+              src={res.mainImage.asset.url}
+              alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
+              class="object-cover h-48 w-96"
+            />
+          </div>
+          <div>
+            <h1>{response.title}</h1>
+          </div>
+        ))
+      }
+    </main>
+  </body>
+</html>
